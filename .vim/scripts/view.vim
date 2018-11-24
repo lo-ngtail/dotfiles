@@ -12,7 +12,10 @@ else
 endif
 
 set t_Co=256
-if g:plug.is_installed('solarized.vim') && $TERM_PROGRAM ==# "Apple_Terminal"
+set term=screen-256color
+set t_ut=
+if g:plug.is_installed('solarized.vim')
+    let g:solarized_termcolors=256
     colorscheme solarized
 elseif g:plug.is_installed('seoul256')
     colorscheme seoul256

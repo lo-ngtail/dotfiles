@@ -23,7 +23,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " syntax? language support
 
     " colorscheme
-    Plug 'b4b4r07/solarized.vim'
+    Plug 'micha/vim-colors-solarized'
     Plug 'w0ng/vim-hybrid'
     Plug 'junegunn/seoul256.vim'
     Plug 'nanotech/jellybeans.vim'
