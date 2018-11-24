@@ -9,28 +9,47 @@ set -eu
 # For more information, see etc/README.md
 . "$DOTPATH"/etc/lib/vital.sh
 
-# The script is dependent on python
-if ! has "python"; then
-    log_fail "error: require: python"
-    exit 1
-fi
-
-if ! has "easy_install"; then
-    if sudo -E yum install -y python-setuptools; then
-        log_pass "easy_install: installed successfully"
-    elif sudo -E apt-get install -y python-setuptools; then
-        log_pass "easy_install: installed successfully"
-    else
-        log_fail "error: easy_install: failed to install"
-        exit 1
-    fi
-fi
-
+# If you don't have pip or don't find pip preserved
+# in a directory with the path,
+# to install it after the platforms are detected
 if ! has "pip"; then
-    if sudo -E easy_install pip; then
-        log_pass "pip: installed successfully"
-    else
-        log_fail "error: pip: failed to install"
-        exit 1
-    fi
+
+    # Install pip
+    case "$(get_os)" in
+        # Case of OS X
+        osx)
+            if has "brew"; then
+                log_echo "Install pip with Homebrew"
+                brew install pip
+            elif "port"; then
+                log_echo "Install pip with MacPorts"
+                sudo port install python_pip 
+            else
+                log_fail "error: require: Homebrew or MacPorts"
+                exit 1
+            fi
+            ;;
+
+        # Case of Linux
+        linux)
+            if has "yum"; then
+                log_echo "Install pip with Yellowdog Updater Modified"
+                sudo -E yum -y install python_pip
+            elif has "apt-get"; then
+                log_echo "Install pip with Advanced Packaging Tool"
+                sudo -E apt-get -y install python_pip
+            else
+                log_fail "error: require: YUM or APT"
+                exit 1
+            fi
+            ;;
+
+        # Other platforms such as BSD are supported
+        *)
+            log_fail "error: this script is only supported osx and linux"
+            exit 1
+            ;;
+    esac
 fi
+
+log_pass "pip: installed successfully"

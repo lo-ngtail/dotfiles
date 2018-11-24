@@ -34,10 +34,10 @@ if ! has "python"; then
         linux)
             if has "yum"; then
                 log_echo "Install python with Yellowdog Updater Modified"
-                sudo -E yum -y install python python-setuptools
+                sudo -E yum -y install python
             elif has "apt-get"; then
                 log_echo "Install python with Advanced Packaging Tool"
-                sudo -E apt-get -y install python python-setuptools
+                sudo -E apt-get -y install python
             else
                 log_fail "error: require: YUM or APT"
                 exit 1
