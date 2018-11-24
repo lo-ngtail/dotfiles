@@ -23,7 +23,7 @@ if ! has "pip"; then
                 brew install pip
             elif "port"; then
                 log_echo "Install pip with MacPorts"
-                sudo port install python_pip 
+                sudo port install python-pip
             else
                 log_fail "error: require: Homebrew or MacPorts"
                 exit 1
@@ -34,10 +34,10 @@ if ! has "pip"; then
         linux)
             if has "yum"; then
                 log_echo "Install pip with Yellowdog Updater Modified"
-                sudo -E yum -y install python_pip
+                sudo -E yum -y install python-pip
             elif has "apt-get"; then
                 log_echo "Install pip with Advanced Packaging Tool"
-                sudo -E apt-get -y install python_pip
+                sudo -E apt-get -y install python-pip
             else
                 log_fail "error: require: YUM or APT"
                 exit 1
