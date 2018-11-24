@@ -35,7 +35,7 @@ if ! has "python"; then
             if has "yum"; then
                 log_echo "Install python with Yellowdog Updater Modified"
                 sudo -E yum -y install python
-            elif "apt-get"; then
+            elif has "apt-get"; then
                 log_echo "Install python with Advanced Packaging Tool"
                 sudo -E apt-get -y install python
             else
