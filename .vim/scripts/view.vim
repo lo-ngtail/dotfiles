@@ -17,8 +17,6 @@ set t_ut=
 if g:plug.is_installed('solarized.vim')
     let g:solarized_termcolors=256
     colorscheme solarized
-elseif g:plug.is_installed('seoul256')
-    colorscheme seoul256
 elseif g:plug.is_installed('hybrid')
     colorscheme hybrid
 endif
