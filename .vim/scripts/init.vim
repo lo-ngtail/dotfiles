@@ -97,7 +97,7 @@ if s:load('plug.vim') " 各プラグインのインストール
 endif
 call s:load('base.vim') " 警告とかエラーを出力する関数
 call s:load('view.vim') " 色とか
-call s:load('map.vim') " キーコンフィグとか
+"call s:load('map.vim')  キーコンフィグとか
 call s:load('option.vim') " vimのオプション設定
 
 " Must be written at the last.  see :help 'secure'.
