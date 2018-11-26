@@ -137,9 +137,19 @@ esac
 alias ssh='TERM=xterm ssh'
 
 # tmux自動起動
-if [ -z $TMUX ]; then
-  # tmuxのオプションに-2を付けないとubuntuのtmux上でvimがカラーにならない
-  tmux -2
+#tmuxで既存セッションがあればnew-sessionせずにアタッチする
+if [[ -z $TMUX && -n $PS1 ]]; then
+  function tmux() {
+    if [[ $# == 0 ]] && tmux has-session 2>/dev/null; then
+      # tmuxのオプションに-2を付けないとubuntuのtmux上でvimがカラーにならない
+      command tmux -2 attach-session
+    else
+      command tmux -2 "$@"
+    fi
+  }
+fi
+if [[ -z $TMUX ]]; then
+  tmux
 fi
 
 # ローカルのzshrcを読み込む
