@@ -597,7 +597,7 @@ else
     echo "**test**"
     echo $0
     echo ${BASH_SOURCE:-}
-    echo ${BASH_EXECUTION_STRING:-}"
+    echo ${BASH_EXECUTION_STRING:-}
     echo "**test**"
     if [ "$0" = "${BASH_SOURCE:-}" ]; then
         exit
