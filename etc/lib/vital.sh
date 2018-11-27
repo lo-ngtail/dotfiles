@@ -598,6 +598,12 @@ else
     echo $0
     echo ${BASH_SOURCE:-}
     echo ${BASH_EXECUTION_STRING:-}
+    if [ -n "${BASH_EXECUTION_STRING:-}" ]; then
+        echo "BASH_EXECUTION_STRING exists"
+    fi
+    if [ -p /dev/stdin ]; then
+        echo "/dev/stdin exists"
+    fi
     echo "**test**"
     if [ "$0" = "${BASH_SOURCE:-}" ]; then
         exit
