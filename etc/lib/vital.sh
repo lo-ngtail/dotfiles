@@ -594,8 +594,10 @@ else
     # -> bash a.sh
 
     # -> bash a.sh
+    echo "**test**"
     echo $0
     echo ${BASH_SOURCE:-}
+    echo "**test**"
     if [ "$0" = "${BASH_SOURCE:-}" ]; then
         exit
     fi
