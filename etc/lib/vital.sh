@@ -594,6 +594,8 @@ else
     # -> bash a.sh
 
     # -> bash a.sh
+    echo $0
+    echo ${BASH_SOURCE:-}
     if [ "$0" = "${BASH_SOURCE:-}" ]; then
         exit
     fi
