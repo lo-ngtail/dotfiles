@@ -207,3 +207,6 @@ bindkey '^k' kill-line-or-up-pane
 bindkey '^l' right-pane
 bindkey '^h' backspace-or-left-pane
 bindkey '^j' accept-line-or-down-pane
+
+# user defined config
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
