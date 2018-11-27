@@ -588,30 +588,17 @@ if echo "$-" | grep -q "i"; then
 
     : return
 else
-    # three patterns
-    # -> cat a.sh | bash
+    # two patterns
     # -> bash -c "$(cat a.sh)"
     # -> bash a.sh
 
     # -> bash a.sh
-    echo "**test**"
-    echo $0
-    echo ${BASH_SOURCE:-}
-    echo ${BASH_EXECUTION_STRING:-}
-    if [ -n "${BASH_EXECUTION_STRING:-}" ]; then
-        echo "BASH_EXECUTION_STRING exists"
-    fi
-    if [ -p /dev/stdin ]; then
-        echo "/dev/stdin exists"
-    fi
-    echo "**test**"
     if [ "$0" = "${BASH_SOURCE:-}" ]; then
         exit
     fi
 
-    # -> cat a.sh | bash
     # -> bash -c "$(cat a.sh)"
-    if [ -n "${BASH_EXECUTION_STRING:-}" ] || [ -p /dev/stdin ]; then
+    if [ -n "${BASH_EXECUTION_STRING:-}" ]; then
         # if already vitalized, skip to run dotfiles_install
         if [ "${VITALIZED:=0}" = 1 ]; then
             exit
