@@ -14,11 +14,11 @@ endif
 set t_Co=256
 set term=screen-256color
 set t_ut=
-if g:plug.is_installed('solarized.vim')
+if g:plug.is_installed('hybrid')
+    colorscheme hybrid
+elseif g:plug.is_installed('colors-solarized')
     let g:solarized_termcolors=256
     colorscheme solarized
-elseif g:plug.is_installed('hybrid')
-    colorscheme hybrid
 endif
 
 " StatusLine {{{1
