@@ -14,6 +14,11 @@ setopt auto_cd
 # ビープ音を鳴らさない
 #setopt no_beep
 
+# Ctrl+S を無効化
+if [[ -t 0 ]]; then
+    stty stop undef
+    stty start undef
+fi
 
 #
 # 補完
