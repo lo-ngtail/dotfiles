@@ -1,3 +1,11 @@
 [user]
 	email = lo0oo0ongtail@gmail.com
 	name = lo-ngtail
+[core]
+	autocrlf = false
+
+[include]
+    path = ~/.gitconfig.local
+[url "github:"]
+    InsteadOf = https://github.com/
+    InsteadOf = git@github.com:

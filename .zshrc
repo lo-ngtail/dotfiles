@@ -108,10 +108,22 @@ setopt hist_ignore_all_dups
 autoload colors
 colors
 
+# git
+autoload -Uz vcs_info
+setopt prompt_subst
+precmd () { vcs_info }
+zstyle ':vcs_info:git:*' check-for-changes true #formats 設定項目で %c,%u が使用可
+zstyle ':vcs_info:git:*' stagedstr "%F{green}!" #commit されていないファイルがある
+zstyle ':vcs_info:git:*' unstagedstr "%F{magenta}+" #add されていないファイルがある
+zstyle ':vcs_info:*' formats "%F{cyan}%c%u(%b)%f" #通常
+zstyle ':vcs_info:*' actionformats '[%b|%a]' #rebase 途中,merge コンフリクト等 formats 外の表示
+
 # プロンプト
-PROMPT="%{${fg[green]}%}%n@%m %{${fg[yellow]}%}%~ %{${fg[red]}%}%# %{${reset_color}%}"
+PROMPT="%{${fg[green]}%}%n@%m %{${fg[yellow]}%}%~ %{${reset_color}%}"
+PROMPT=$PROMPT'${vcs_info_msg_0_}%{${fg[red]}%}$%{${reset_color}%} '
 PROMPT2="%{${fg[yellow]}%} %_ > %{${reset_color}%}"
 SPROMPT="%{${fg[red]}%}correct: %R -> %r ? [n,y,a,e] %{${reset_color}%}"
+
 
 # ls
 export LSCOLORS=gxfxcxdxbxegedabagacag
