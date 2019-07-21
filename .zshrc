@@ -153,7 +153,9 @@ esac
 # E437: terminal capability "cm" required
 alias ssh='TERM=xterm ssh'
 
-# tmux自動起動
+# tmux自動起動(空:ON, それ以外:OFF)
+TMUX=OFF
+alias tmux='tmux -2 a || tmux -2'
 #tmuxで既存セッションがあればnew-sessionせずにアタッチする
 if [[ -z $TMUX && -n $PS1 ]]; then
   function tmux() {
@@ -224,6 +226,3 @@ bindkey '^k' kill-line-or-up-pane
 bindkey '^l' right-pane
 bindkey '^h' backspace-or-left-pane
 bindkey '^j' accept-line-or-down-pane
-
-# user defined config
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
