@@ -3,4 +3,7 @@
 "
 if 1
   execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/scripts/init.vim'
+
 endif
+
+set encoding=utf-8
