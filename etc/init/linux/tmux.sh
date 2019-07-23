@@ -34,7 +34,7 @@ if ! has "tmux"; then
         linux)
             if has "yum"; then
                 log_echo "Install tmux with Yellowdog Updater Modified"
-                sudo -E yum -y install mux
+                sudo -E yum -y install tmux
             elif has "apt-get"; then
                 log_echo "Install tmux with Advanced Packaging Tool"
                 sudo -E apt-get -y install tmux
