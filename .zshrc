@@ -197,32 +197,34 @@ zle -N right-pane _right-pane
 
 function _backspace-or-left-pane() {
       if [[ $#BUFFER -gt 0 ]]; then
-              zle backward-delete-char
-                elif [[ ! -z ${TMUX} ]]; then
-                    zle left-pane
-                      fi
+        zle backward-delete-char
+      elif [[ ! -z ${TMUX} ]]; then
+        zle left-pane
+      fi
 }
 zle -N backspace-or-left-pane _backspace-or-left-pane
 
 function _kill-line-or-up-pane() {
       if [[ $#BUFFER -gt 0 ]]; then
-              zle kill-line
-                elif [[ ! -z ${TMUX} ]]; then
-                    zle up-pane
-                      fi
+        zle kill-line
+      elif [[ ! -z ${TMUX} ]]; then
+        zle up-pane
+      fi
 }
 zle -N kill-line-or-up-pane _kill-line-or-up-pane
 
 function _accept-line-or-down-pane() {
       if [[ $#BUFFER -gt 0 ]]; then
-              zle accept-line
-                elif [[ ! -z ${TMUX} ]]; then
-                    zle down-pane
-                      fi
+        zle accept-line
+      elif [[ ! -z ${TMUX} ]]; then
+        zle down-pane
+      fi
 }
 zle -N accept-line-or-down-pane _accept-line-or-down-pane
 
-bindkey '^k' kill-line-or-up-pane
-bindkey '^l' right-pane
-bindkey '^h' backspace-or-left-pane
-bindkey '^j' accept-line-or-down-pane
+if [[ $TMUX != "OFF" ]]; then
+    bindkey '^k' kill-line-or-up-pane
+    bindkey '^l' right-pane
+    bindkey '^h' backspace-or-left-pane
+    bindkey '^j' accept-line-or-down-pane
+fi
