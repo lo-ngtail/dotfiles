@@ -1,4 +1,6 @@
+```sh
 bash -c "$(curl -L https://raw.githubusercontent.com/lo-ngtail/dotfiles/master/etc/install)"
+```
 
 <!--
 <p align="center">
